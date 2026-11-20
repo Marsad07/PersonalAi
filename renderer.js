@@ -1,5 +1,4 @@
-import {storeMemory} from '/memory.js'
-
+import { storeMemory } from './memory.js';
 // Confirm renderer.js has been successfully loaded by index.html.
 console.log("renderer is running");
 function handleUserMessage() {
@@ -10,7 +9,7 @@ function handleUserMessage() {
     document.getElementById('messageArea').innerHTML = message;
 
     // Add user input to memory array
-    storeMemory();  
+    storeMemory(message);  
 
     // Debugging messages to confirm the event fired and the user's message was successfully retrieved.
     console.log("button clicked");
