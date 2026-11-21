@@ -2,10 +2,9 @@
 
 A desktop AI companion built with **Electron** and **JavaScript**. The chatbot takes on a character's personality, remembers the conversation, and (eventually) speaks its replies and reacts with animations.
 
-> 🚧 **Status:** V1 (Core Chat Application) in progress.
+>**Status:** V1 (Core Chat Application) in progress.
 
-<!-- Add a screenshot or GIF of the app here once V1 is finished: -->
-<!-- ![PersonalAi demo](docs/demo.gif) -->
+![PersonalAi demo](docs/demo.gif)
 
 ---
 
@@ -50,7 +49,7 @@ npm start
 
 ## Roadmap
 
-### V1: Core Chat Application 🚧
+### V1: Core Chat Application  ✅
 - [x] Electron startup flow and `BrowserWindow` creation
 - [x] `renderer.js` integration
 - [x] User input handling and event listeners
