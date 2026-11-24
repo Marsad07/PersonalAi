@@ -8,7 +8,7 @@ CORS(app)
 def home():
     return "Backend running"
 
-@app.route("/chat", methods=["POST"])                   # only accepts POST requests
+@app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()                           # reads the JSON Electron sends: {"message": "Hello"}
     message = data["message"]                           # pulls out the message text
