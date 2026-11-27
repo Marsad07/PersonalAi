@@ -2,7 +2,7 @@
 
 A desktop AI companion built with **Electron** and **JavaScript**. The chatbot takes on a character's personality, remembers the conversation, and (eventually) speaks its replies and reacts with animations.
 
->**Status:** V1 (Core Chat Application) in progress.
+>**Status:** V2 (AI integration) in progress.
 
 ![PersonalAi demo](docs/demo.gif)
 
