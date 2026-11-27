@@ -1,26 +1,42 @@
 import { storeMemory } from './memory.js';
-const BACKEND_URL = "http://127.0.0.1:5000";
+
+const BACKEND_URL = "http://127.0.0.1:5000"; // Flask server address (change here when deployed)
 
 // Confirm renderer.js has been successfully loaded by index.html.
 console.log("renderer is running");
-function handleUserMessage() {
-    // Retrieve the text currently entered by the user.
-    let message = document.getElementById('userInput').value;
 
-    // Find the message area and replace its contents with whatever the user typed.
-    document.getElementById('messageArea').innerHTML = message;
-
-    // Add user input to memory array
-    storeMemory(message);
-
-    // Debugging messages to confirm the event fired and the user's message was successfully retrieved.
-    console.log("button clicked");
-    console.log("Here is what user submitted: ", message);
+// Adds one message to the bottom of the chat area.
+// textContent so typed HTML/scripts are shown as text, not run.
+function addMessage(text) {
+    const p = document.createElement("p");
+    p.textContent = text;
+    document.getElementById("messageArea").appendChild(p);
 }
 
-function setupEventListners() {
+async function handleUserMessage() {
+    // Retrieve the text currently entered by the user.
+    const message = document.getElementById('userInput').value;
+
+    // Show the user message in the chat and add it to memory.
+    addMessage(message);
+    storeMemory(message);
+
+    // Clears input box after send
+    document.getElementById('userInput').value = "";
+
+    // Send it to Flask, wait for the reply, then show the reply in the chat.
+    const reply = await sendToBackend(message);
+    addMessage(reply);
+
+    // Debugging: confirm the event fired and what was sent/received.
+    console.log("button clicked");
+    console.log("User submitted:", message, "| Backend replied:", reply);
+}
+
+function setupEventListeners() {
     // Find the Send button and listen for click events.
     document.getElementById('sendButton').addEventListener("click", handleUserMessage);
+
     // Confirm the listener has been attached successfully.
     console.log("setupEventListeners running");
 }
@@ -39,5 +55,4 @@ async function sendToBackend(message) { // async because any function using "awa
     return data.reply;
 }
 
-sendToBackend("Hello there").then(console.log); 
-setupEventListners();
+setupEventListeners();
