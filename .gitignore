@@ -154,3 +154,6 @@ vite.config.ts.timestamp-*
 # Python
 venv/
 __pycache__/
+
+# Personal characters (not for the public repo)
+backend/characters/harveySpecter.json

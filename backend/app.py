@@ -1,5 +1,13 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.getenv("ANTHROPIC_API_KEY")
+MODEL = os.getenv("CLAUDE_MODEL")
+print("Key loaded:", API_KEY is not None, "| Model:", MODEL)
 
 app = Flask(__name__)
 CORS(app)
